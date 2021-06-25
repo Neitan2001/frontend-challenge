@@ -1,0 +1,32 @@
+.search-container {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 5%;
+    background-color: #fdfcfc;
+    border-style: solid;
+    border-color: #979797;
+    border-width: 1px;
+    border-radius: 10px;
+  }
+  
+  .search-icon {
+    display: flex;
+    justify-content: center;
+    width: 10%;
+    height: 50%;
+  }
+  
+  .search-box {
+    width: 90%;
+    height: 100%;
+    border: 0;
+    border-radius: 0 10px 10px 0;
+  }
+  
+  .search-box::placeholder {
+     color: #54565A;
+     font-size: 16px;
+    }
