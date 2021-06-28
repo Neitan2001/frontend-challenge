@@ -29,6 +29,23 @@ const DiscoverNewBook = () => {
                         <img src={BookCover} alt="book-cover" className="book-img" />
                     </div>
                 </div>
+                <div className="second-book">
+                    <div className="book-info">
+                        <div className="book-name">
+                            <h1>Hooked</h1>
+                            <h4>Nir Eyal</h4>
+                        </div>
+                        <div className="book-statistics">
+                            <img src={StatisticsIcon} alt="statistics-icon" />
+                            <p>120 + </p>
+                            <p>Read More</p>
+                        </div>
+                    </div>
+                    <div className="book-cover">
+                        <img src={GeometricForms} alt="geometric-forms" className="geometric-forms" />
+                        <img src={BookCover} alt="book-cover" className="book-img" />
+                    </div>
+                </div>
                 <div className="first-book">
                     <div className="book-info">
                         <div className="book-name">
@@ -46,6 +63,7 @@ const DiscoverNewBook = () => {
                         <img src={BookCover} alt="book-cover" className="book-img" />
                     </div>
                 </div>
+                
             </div>
         </div>
     );

@@ -1,16 +1,29 @@
 .discover-container{
-    width: 90%;
+    width: 95.5%;
     height: 100%;
     display: flex;
     flex-direction: column;
     margin-top: 2rem;
     margin-left: 1rem;
+
+    background-image: url("../../assets/oval2.svg");
+    background-repeat: no-repeat;
+    background-position: top right;
 }
 
 .discover-title{
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.discover-title p{
+    font-size: 14px;
+    color: #4ABDF1;
+    cursor: pointer;
 }
 
 .new-books-container{
@@ -18,7 +31,6 @@
     height: 100%;
 
     overflow: auto;
-    height: 100%;
     display: flex;
 
 }
@@ -34,6 +46,19 @@
 
     margin: 0.5rem 1rem 0 0;
     background-color: #00173D;
+    border-radius: 5px;
+    background-image: url("../../assets/oval.svg");
+    background-repeat: no-repeat;
+    background-position: bottom left;
+}
+
+.second-book{
+    width: 80%;
+    height: 90%;
+    display: flex;
+
+    margin: 0.5rem 1rem 0 0;
+    background-color: #451475;
     border-radius: 5px;
     background-image: url("../../assets/oval.svg");
     background-repeat: no-repeat;

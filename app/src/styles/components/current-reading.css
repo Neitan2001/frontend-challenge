@@ -1,0 +1,71 @@
+.current-container{
+    width: 100%;
+    height: 100%;
+
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.current-title{
+    display: flex;
+
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 2rem;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+.current-title p{
+    font-size: 14px;
+    color: #4ABDF1;
+    cursor: pointer;
+}
+
+.book-display{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    border-radius: 0 3px 3px 0;
+    background-color: #EEF5DB;
+    background-image: url('../../assets/current-background.png');
+    background-repeat: no-repeat;
+    background-position: top right;
+}
+
+.current-cover{
+    height: 120%;
+
+    margin-left: 1rem;
+}
+
+.current-info{
+    width: 100%;
+    height: 100%;
+
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-around;
+}
+
+.current-pages{
+    display: flex;
+}
+
+.current-pages img{
+    margin-right: 0.2rem;
+}
+
+.styled-number{
+    color: #FF6978;
+
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+}

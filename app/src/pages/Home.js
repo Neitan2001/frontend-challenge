@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/pages/home.css';
 import SearchBar from '../components/search-bar';
 import DiscoverNewBook from '../components/discover-new-book';
+import CurrentReading from '../components/current-reading';
 import greetinIcon from '../assets/greeting-icon.svg';
 
 const Home = () => {
@@ -15,6 +16,13 @@ const Home = () => {
             </div>
             <div className="discover-div">
                 <DiscoverNewBook />
+            </div>
+            <div className="current-div">
+                <CurrentReading />
+            </div>
+            <div className="reviews">
+                <h2>Reviews of The Days</h2>
+                <p>All Video</p>
             </div>
         </div>
     );
