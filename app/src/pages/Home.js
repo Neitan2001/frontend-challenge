@@ -71,6 +71,8 @@ const Home = () => {
                                 return (
                                     <div key={book.id} className="books-search">
                                         <img src={book.volumeInfo.imageLinks ? (book.volumeInfo.imageLinks.thumbnail) : (noCover)} alt={book.volumeInfo.title} />
+                                        <p className="book-search-title">{book.volumeInfo.title}</p>
+                                        <p className="book-search-author">By {book.volumeInfo.authors}</p>
                                     </div>
                                 );
 
@@ -78,40 +80,39 @@ const Home = () => {
                         }
                     </div>
                 ) : (
-                    <div>
-                        <h1>oi</h1>
-                    </div>
+                    <>
+                        <div className="greeting-container">
+                            <h1>Olá, </h1>
+                            <h1 className="user-name">Natan Tavares</h1>
+                            <img src={greetinIcon} alt="greeting-icon" className="greeting-icon" />
+                        </div>
+                        <div className="discover-div">
+                            <DiscoverNewBook />
+                        </div>
+                        <div className="current-div">
+                            <CurrentReading />
+                        </div>
+                        <div className="reviews-container">
+                            <div className="reviews-titles">
+                                <h2>Reviews of The Days</h2>
+                                <p>All Video</p>
+                            </div>
+                            {
+                                reviewVideos.map((videos) => {
+                                    return (
+                                        <div key={videos.name} className="videos-container">
+                                            <img src={videos.src} alt={videos.name} />
+                                        </div>
+                                    );
+                                })
+                            }
+                        </div>
+                        <div className="nav-bar-div">
+                            <NavBar />
+                        </div>
+                    </>
                 )
             }
-            {/* <div className="greeting-container">
-                <h1>Olá, </h1>
-                <h1 className="user-name">Natan Tavares</h1>
-                <img src={greetinIcon} alt="greeting-icon" className="greeting-icon" />
-            </div>
-            <div className="discover-div">
-                <DiscoverNewBook />
-            </div>
-            <div className="current-div">
-                <CurrentReading />
-            </div>
-            <div className="reviews-container">
-                <div className="reviews-titles">
-                    <h2>Reviews of The Days</h2>
-                    <p>All Video</p>
-                </div>
-                {
-                    reviewVideos.map((videos) => {
-                        return (
-                            <div key={videos.name} className="videos-container">
-                                <img src={videos.src} alt={videos.name} />
-                            </div>
-                        );
-                    })
-                }
-            </div>
-            <div className="nav-bar-div">
-                <NavBar />
-            </div> */}
         </div>
     );
 }
