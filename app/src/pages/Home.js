@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/pages/home.css';
-import SearchBar from '../components/search-bar';
+import searchIcon from '../assets/search-icon.svg';
 import DiscoverNewBook from '../components/discover-new-book';
 import CurrentReading from '../components/current-reading';
 import greetinIcon from '../assets/greeting-icon.svg';
 import NavBar from '../components/nav-bar';
+import noCover from '../assets/no-cover.png';
+import api from '../services/api';
 
 
 
@@ -21,12 +23,67 @@ const Home = () => {
         }
     ]
 
+    const [bookSearch, setBookSearch] = useState();
+    const [bookResults, setBookResults] = useState([
+        {
+            volumeInfo: {
+                title: "",
+                authors: [""],
+                imageLinks: {
+                    thumbnail: ""
+                }
+            }
+        }
+    ]);
+
+    const SearchBook = async () => {
+
+        if (bookSearch) {
+            const res = await api.get(`/volumes?q=${bookSearch}&maxResults=40`);
+            console.log(res.data.items);
+            setBookResults(res.data.items);
+        }
+
+    }
+
+    useEffect(() => {
+        SearchBook();
+    }, [bookSearch]);
+
     return (
         <div className="home-container">
             <div className="search-bar-container">
-                <SearchBar />
+                <div className="search-container">
+                    <div className="search-icon">
+                        <img src={searchIcon} alt="search-icon" />
+                    </div>
+                    <input onChange={(e) => {
+                        setBookSearch(e.target.value);
+                    }
+                    } type="search" className="search-box" placeholder="Search Book" />
+                </div>
             </div>
-            <div className="greeting-container">
+            {
+                bookSearch ? (
+                    <div className="search-book-grid">
+                        {
+                            bookResults.map((book) => {
+                                return (
+                                    <div key={book.id} className="books-search">
+                                        <img src={book.volumeInfo.imageLinks ? (book.volumeInfo.imageLinks.thumbnail) : (noCover)} alt={book.volumeInfo.title} />
+                                    </div>
+                                );
+
+                            })
+                        }
+                    </div>
+                ) : (
+                    <div>
+                        <h1>oi</h1>
+                    </div>
+                )
+            }
+            {/* <div className="greeting-container">
                 <h1>Olá, </h1>
                 <h1 className="user-name">Natan Tavares</h1>
                 <img src={greetinIcon} alt="greeting-icon" className="greeting-icon" />
@@ -53,8 +110,8 @@ const Home = () => {
                 }
             </div>
             <div className="nav-bar-div">
-                <NavBar/>
-            </div>
+                <NavBar />
+            </div> */}
         </div>
     );
 }
