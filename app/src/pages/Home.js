@@ -45,7 +45,7 @@ const Home = () => {
                 {
                     reviewVideos.map((videos) => {
                         return (
-                            <div className="videos-container">
+                            <div key={videos.name} className="videos-container">
                                 <img src={videos.src} alt={videos.name} />
                             </div>
                         );
