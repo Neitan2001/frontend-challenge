@@ -1,0 +1,44 @@
+.detail-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.detail-book-cover {
+  width: 100%;
+  height: 35vh;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  background-image: url("../../assets/book-detail-background.png");
+  background-position: top right;
+  background-repeat: no-repeat;
+  border-radius: 0 0 100px 0;
+  background-color: #fff6e5;
+}
+
+.left-arrow {
+  width: 100%;
+  height: 2vh;
+  display: flex;
+
+  margin-left: 4rem;
+  margin-top: 3.5rem;
+}
+
+.detail-book-img {
+  width: 100%;
+  height: 15rem;
+
+  margin-top: 2rem;
+}
+
+.detail-book-info{
+    width: 100%;
+    margin-left: 2rem;
+    margin-top: 6rem;
+}

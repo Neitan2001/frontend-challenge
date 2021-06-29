@@ -35,15 +35,28 @@ const Home = () => {
             }
         }
     ]);
+    const [totalSearch, setTotalSearch] = useState();
+    const [searchLimit, setSearchLimit] = useState(10);
 
     const SearchBook = async () => {
 
         if (bookSearch) {
-            const res = await api.get(`/volumes?q=${bookSearch}&maxResults=40`);
+            
+            const res = await api.get(`/volumes?q=${bookSearch}&maxResults=${searchLimit}`);
             console.log(res.data.items);
             setBookResults(res.data.items);
+            
         }
+        setSearchLimit(10);
 
+    }
+
+    const UpdateLimit = async () => {
+        const newLimit = searchLimit + 15;
+        setSearchLimit(newLimit);
+        const res = await api.get(`/volumes?q=${bookSearch}&maxResults=${newLimit}`);
+        console.log(res.data.items);
+        setBookResults(res.data.items);
     }
 
     useEffect(() => {
@@ -65,20 +78,25 @@ const Home = () => {
             </div>
             {
                 bookSearch ? (
-                    <div className="search-book-grid">
-                        {
-                            bookResults.map((book) => {
-                                return (
-                                    <div key={book.id} className="books-search">
-                                        <img src={book.volumeInfo.imageLinks ? (book.volumeInfo.imageLinks.thumbnail) : (noCover)} alt={book.volumeInfo.title} />
-                                        <p className="book-search-title">{book.volumeInfo.title}</p>
-                                        <p className="book-search-author">By {book.volumeInfo.authors}</p>
-                                    </div>
-                                );
+                    <>
+                        <div className="search-book-grid">
+                            {
+                                bookResults.map((book) => {
+                                    return (
+                                        <div key={book.id} className="books-search">
+                                            <img src={book.volumeInfo.imageLinks ? (book.volumeInfo.imageLinks.thumbnail) : (noCover)} alt={book.volumeInfo.title} />
+                                            <p className="book-search-title">{book.volumeInfo.title}</p>
+                                            <p className="book-search-author">By {book.volumeInfo.authors}</p>
+                                        </div>
+                                    );
 
-                            })
-                        }
-                    </div>
+                                })
+                            }
+                        </div>
+                        <div className="load-more" onClick={UpdateLimit}>
+                            <p>Load More</p>
+                        </div>
+                    </>
                 ) : (
                     <>
                         <div className="greeting-container">
