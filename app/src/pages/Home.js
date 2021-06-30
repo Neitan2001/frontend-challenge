@@ -41,18 +41,18 @@ const Home = () => {
     const SearchBook = async () => {
 
         if (bookSearch) {
-            
+
             const res = await api.get(`/volumes?q=${bookSearch}&maxResults=${searchLimit}`);
             console.log(res.data.items);
             setBookResults(res.data.items);
-            
+
         }
         setSearchLimit(10);
 
     }
 
     const UpdateLimit = async () => {
-        const newLimit = searchLimit + 15;
+        const newLimit = searchLimit + 10;
         setSearchLimit(newLimit);
         const res = await api.get(`/volumes?q=${bookSearch}&maxResults=${newLimit}`);
         console.log(res.data.items);
@@ -93,9 +93,17 @@ const Home = () => {
                                 })
                             }
                         </div>
-                        <div className="load-more" onClick={UpdateLimit}>
-                            <p>Load More</p>
-                        </div>
+                        {
+                            searchLimit < 40 ? (
+                                <div className="load-more" onClick={UpdateLimit}>
+                                    <p>Load More</p>
+                                </div>
+                            ) : (
+                                <div className="no-more-books">
+                                    <p>No More Books</p>
+                                </div>
+                            )
+                        }
                     </>
                 ) : (
                     <>
