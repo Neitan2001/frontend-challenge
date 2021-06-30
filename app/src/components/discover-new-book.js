@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import '../styles/components/discover-new-book.css';
 import Loading from './loading';
 import StatisticsIcon from '../assets/statistics-icon.svg';
@@ -6,25 +7,35 @@ import GeometricForms from '../assets/geometric-forms.svg';
 import api from '../services/api';
 
 const DiscoverNewBook = () => {
+    const history = useHistory();
     const [firstBook, setFirstBook] = useState({
-        title: "",
-        authors: [""],
-        imageLinks: {
-            thumbnail: ""
+        id: "",
+        volumeInfo: {
+            title: "",
+            authors: [""],
+            imageLinks: {
+                thumbnail: ""
+            }
         }
     });
     const [secondBook, setSecondBook] = useState({
-        title: "",
-        authors: [""],
-        imageLinks: {
-            thumbnail: ""
+        id: "",
+        volumeInfo: {
+            title: "",
+            authors: [""],
+            imageLinks: {
+                thumbnail: ""
+            }
         }
     });
     const [thirdBook, setThirdBook] = useState({
-        title: "",
-        authors: [""],
-        imageLinks: {
-            thumbnail: ""
+        id: "",
+        volumeInfo: {
+            title: "",
+            authors: [""],
+            imageLinks: {
+                thumbnail: ""
+            }
         }
     });
 
@@ -32,13 +43,13 @@ const DiscoverNewBook = () => {
 
     const getBooks = async () => {
         const firstBook = await api.get('/volumes/Ca_aDwAAQBAJ');
-        setFirstBook(firstBook.data.volumeInfo);
+        setFirstBook(firstBook.data);
 
         const secondBook = await api.get('/volumes/LrQPAQAAMAAJ');
-        setSecondBook(secondBook.data.volumeInfo);
+        setSecondBook(secondBook.data);
 
         const thirdBook = await api.get('/volumes/3bdbiVvMph4C');
-        setThirdBook(thirdBook.data.volumeInfo);
+        setThirdBook(thirdBook.data);
 
         setIsLoading(true);
     };
@@ -51,17 +62,17 @@ const DiscoverNewBook = () => {
     return (
         <div className="discover-container">
             <div className="discover-title">
-                <h2>Discove New Book</h2>
+                <h2>Discover New Book</h2>
                 <p>More</p>
             </div>
             {
                 isLoading ? (
                     <div className="new-books-container">
-                        <div className="first-book">
+                        <div className="first-book" onClick={() => { history.push(`/detail/${firstBook.id}`) }}>
                             <div className="book-info">
                                 <div className="book-name">
-                                    <h1>{firstBook.title}</h1>
-                                    <h4>By {firstBook.authors}</h4>
+                                    <h2>{firstBook.volumeInfo.title}</h2>
+                                    <p>By {firstBook.volumeInfo.authors}</p>
                                 </div>
                                 <div className="book-statistics">
                                     <img src={StatisticsIcon} alt="statistics-icon" />
@@ -71,14 +82,14 @@ const DiscoverNewBook = () => {
                             </div>
                             <div className="book-cover">
                                 <img src={GeometricForms} alt="geometric-forms" className="geometric-forms" />
-                                <img src={firstBook.imageLinks.thumbnail} alt="book-cover" className="book-img" />
+                                <img src={firstBook.volumeInfo.imageLinks.thumbnail} alt="book-cover" className="book-img" />
                             </div>
                         </div>
-                        <div className="second-book">
+                        <div className="second-book" onClick={() => { history.push(`/detail/${secondBook.id}`) }}>
                             <div className="book-info">
                                 <div className="book-name">
-                                    <h1>{secondBook.title}</h1>
-                                    <h4>By {secondBook.authors}</h4>
+                                    <h2>{secondBook.volumeInfo.title}</h2>
+                                    <p>By {secondBook.volumeInfo.authors}</p>
                                 </div>
                                 <div className="book-statistics">
                                     <img src={StatisticsIcon} alt="statistics-icon" />
@@ -88,14 +99,14 @@ const DiscoverNewBook = () => {
                             </div>
                             <div className="book-cover">
                                 <img src={GeometricForms} alt="geometric-forms" className="geometric-forms" />
-                                <img src={secondBook.imageLinks.thumbnail} alt="book-cover" className="book-img" />
+                                <img src={secondBook.volumeInfo.imageLinks.thumbnail} alt="book-cover" className="book-img" />
                             </div>
                         </div>
-                        <div className="first-book">
+                        <div className="first-book" onClick={() => { history.push(`/detail/${thirdBook.id}`) }}>
                             <div className="book-info">
                                 <div className="book-name">
-                                    <h1>{thirdBook.title}</h1>
-                                    <h4>By {thirdBook.authors}</h4>
+                                    <h2>{thirdBook.volumeInfo.title}</h2>
+                                    <p>By {thirdBook.volumeInfo.authors}</p>
                                 </div>
                                 <div className="book-statistics">
                                     <img src={StatisticsIcon} alt="statistics-icon" />
@@ -105,7 +116,7 @@ const DiscoverNewBook = () => {
                             </div>
                             <div className="book-cover">
                                 <img src={GeometricForms} alt="geometric-forms" className="geometric-forms" />
-                                <img src={thirdBook.imageLinks.thumbnail} alt="book-cover" className="book-img" />
+                                <img src={thirdBook.volumeInfo.imageLinks.thumbnail} alt="book-cover" className="book-img" />
                             </div>
                         </div>
 

@@ -20,6 +20,10 @@
     justify-content: space-between;
 }
 
+.current-title h2{
+    color: #3F4043;
+}
+
 .current-title p{
     font-size: 14px;
     color: #4ABDF1;
@@ -32,6 +36,7 @@
     display: flex;
     align-items: center;
 
+    cursor: pointer;
     border-radius: 0 3px 3px 0;
     background-color: #EEF5DB;
     background-image: url('../../assets/current-background.png');
@@ -56,8 +61,23 @@
     justify-content: space-around;
 }
 
+.current-info h3{
+    color: #2A2B26;
+}
+
+.current-info p{
+    font-size: 10px;
+    color: #74776D;
+}
+
+.current-pages p{
+    color: #2A2B26;
+}
+
 .current-pages{
     display: flex;
+
+    align-items: center;
 }
 
 .current-pages img{

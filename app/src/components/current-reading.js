@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import '../styles/components/current-reading.css';
 import Loading from './loading';
 import bookIcon from '../assets/book-icon.svg';
 import api from '../services/api';
 
 const CurrentReading = () => {
+    const history = useHistory();
 
     const [currentBook, setCurrentBook] = useState({
-        title: "",
-        authors: [""],
-        imageLinks: {
-            thumbnail: ""
+        id: "",
+        volumeInfo: {
+            title: "",
+            authors: [""],
+            imageLinks: {
+                thumbnail: ""
+            }
         }
     });
 
@@ -18,7 +23,7 @@ const CurrentReading = () => {
 
     const getBooks = async () => {
         const currentBook = await api.get('/volumes/XuyaDwAAQBAJ');
-        setCurrentBook(currentBook.data.volumeInfo);
+        setCurrentBook(currentBook.data);
 
         setIsLoading(true);
     };
@@ -36,12 +41,12 @@ const CurrentReading = () => {
                             <h2>Current Reading</h2>
                             <p>All</p>
                         </div>
-                        <div className="book-display">
-                            <img src={currentBook.imageLinks.thumbnail} alt="book-cover" className="current-cover" />
+                        <div className="book-display" onClick={() => { history.push(`/detail/${currentBook.id}`) }}>
+                            <img src={currentBook.volumeInfo.imageLinks.thumbnail} alt="book-cover" className="current-cover" />
                             <div className="current-info">
                                 <div>
-                                    <h4>{currentBook.title}</h4>
-                                    <p>By {currentBook.authors}</p>
+                                    <h3>{currentBook.volumeInfo.title}</h3>
+                                    <p>By {currentBook.volumeInfo.authors}</p>
                                 </div>
                                 <div className="current-pages">
                                     <img src={bookIcon} alt="book-icon" />
