@@ -39,6 +39,7 @@ const Home = () => {
         }
     ]);
     const [searchLimit, setSearchLimit] = useState(10);
+    const [userName, setUserName] = useState("");
 
     const SearchBook = async () => {
 
@@ -60,6 +61,16 @@ const Home = () => {
         console.log(res.data.items);
         setBookResults(res.data.items);
     }
+
+    useEffect(() => {
+        const userName = localStorage.getItem('@bookapp/userName');
+        const _userId = localStorage.getItem('@bookapp/userId');
+
+        if (userName && _userId) {
+            setUserName(userName);
+        }
+
+    }, []);
 
     useEffect(() => {
         SearchBook();
@@ -114,7 +125,7 @@ const Home = () => {
                     <>
                         <div className="greeting-container">
                             <h1>Olá, </h1>
-                            <h1 className="user-name">Natan Tavares</h1>
+                            <h1 className="user-name">{userName}</h1>
                             <img src={greetinIcon} alt="greeting-icon" className="greeting-icon" />
                         </div>
                         <div className="discover-div">

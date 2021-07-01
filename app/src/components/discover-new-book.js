@@ -119,6 +119,40 @@ const DiscoverNewBook = () => {
                                 <img src={thirdBook.volumeInfo.imageLinks.thumbnail} alt="book-cover" className="book-img" />
                             </div>
                         </div>
+                        <div className="first-book" onClick={() => { history.push(`/detail/${firstBook.id}`) }}>
+                            <div className="book-info">
+                                <div className="book-name">
+                                    <h2>{firstBook.volumeInfo.title}</h2>
+                                    <p>By {firstBook.volumeInfo.authors}</p>
+                                </div>
+                                <div className="book-statistics">
+                                    <img src={StatisticsIcon} alt="statistics-icon" />
+                                    <p>120 + </p>
+                                    <p>Read More</p>
+                                </div>
+                            </div>
+                            <div className="book-cover">
+                                <img src={GeometricForms} alt="geometric-forms" className="geometric-forms" />
+                                <img src={firstBook.volumeInfo.imageLinks.thumbnail} alt="book-cover" className="book-img" />
+                            </div>
+                        </div>
+                        <div className="first-book" onClick={() => { history.push(`/detail/${firstBook.id}`) }}>
+                            <div className="book-info">
+                                <div className="book-name">
+                                    <h2>{firstBook.volumeInfo.title}</h2>
+                                    <p>By {firstBook.volumeInfo.authors}</p>
+                                </div>
+                                <div className="book-statistics">
+                                    <img src={StatisticsIcon} alt="statistics-icon" />
+                                    <p>120 + </p>
+                                    <p>Read More</p>
+                                </div>
+                            </div>
+                            <div className="book-cover">
+                                <img src={GeometricForms} alt="geometric-forms" className="geometric-forms" />
+                                <img src={firstBook.volumeInfo.imageLinks.thumbnail} alt="book-cover" className="book-img" />
+                            </div>
+                        </div>
 
                     </div>
                 ) : (

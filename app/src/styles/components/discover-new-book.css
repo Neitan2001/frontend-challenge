@@ -39,9 +39,6 @@
 
 }
 
-.new-books-container::-webkit-scrollbar{
-    display: none;
-}
 
 .first-book{
     width: 80%;
@@ -123,4 +120,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media (max-width: 900px) {
+    
+    .new-books-container::-webkit-scrollbar{
+        display: none;
+    }
 }
