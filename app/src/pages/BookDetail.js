@@ -36,7 +36,7 @@ const BookDetail = () => {
     return (
         <div className="detail-container">
             <div className="detail-book-cover">
-                <div className="left-arrow" onClick={() => { history.push('/') }}>
+                <div className="left-arrow" onClick={() => { history.push('/home') }}>
                     <img src={leftArrow} alt="left-arrow" />
                 </div>
                 {
