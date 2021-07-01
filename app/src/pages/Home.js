@@ -74,6 +74,7 @@ const Home = () => {
 
     useEffect(() => {
         SearchBook();
+         // eslint-disable-next-line
     }, [bookSearch]);
 
     return (

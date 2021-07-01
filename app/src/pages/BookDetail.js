@@ -30,6 +30,7 @@ const BookDetail = () => {
 
     useEffect(() => {
         getBooks();
+         // eslint-disable-next-line
     }, []);
 
 
