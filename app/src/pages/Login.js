@@ -21,7 +21,7 @@ const Login = () => {
             <h1>Natan's Book App</h1>
             <div className="google-login">
                 <GoogleLogin
-                    clientId="601894431684-0bcajhftkb02975gi7keiu5j0chbtrsg.apps.googleusercontent.com"
+                    clientId={process.env.REACT_APP_GOOGLE_ID}
                     buttonText="Login"
                     onSuccess={responseGoogleSuccess}
                     onFailure={responseGoogleFailure}
